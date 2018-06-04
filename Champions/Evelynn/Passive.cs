@@ -15,10 +15,6 @@ namespace Spells
         private Spell _owningSpell;
         private BuffGameScriptController InvisBuff;
 
-        private bool _frenzyLearned;
-        private BuffGameScriptController FrenzyBuff;
-        private Spell _frenzy;
-
         public void OnActivate(Champion owner)
         {
             _lastTakenDamage = 0;
@@ -26,9 +22,6 @@ namespace Spells
             _owningChampion = owner;
             _invisActive = false;
             ApiEventManager.OnChampionDamageTaken.AddListener(this, owner, SelfWasDamaged);
-
-            _frenzyLearned = false;
-            _frenzy = _owningChampion.GetSpell(1);
         }
 
         private void SelfWasDamaged()
@@ -39,7 +32,6 @@ namespace Spells
                 _owningChampion.RemoveBuffGameScript(InvisBuff);
             }
             _invisActive = false;
-            ApiFunctionManager.LogInfo("Evelynn took damage. Invisibility removed.");
         }
 
         public void OnDeactivate(Champion owner)
@@ -60,19 +52,6 @@ namespace Spells
 
         public void OnUpdate(double diff)
         {
-            //TODO:Enable this when a way to give speed stacks is found
-            /*if (!_frenzyLearned)
-            {
-                if (_frenzy.Level >= 1)
-                {
-                    _frenzyLearned = true;
-                }
-            }
-
-            if (_frenzyLearned)
-            {
-                FrenzyBuff = _owningChampion.AddBuffGameScript("EveSpeed", "EveSpeed", _frenzy, -1, true);
-            }*/
 
             if (_owningChampion == null)
             {
@@ -93,7 +72,6 @@ namespace Spells
             {
                 if (!_invisActive)
                 {
-                    ApiFunctionManager.LogInfo("Evelynn hasn't been damaged in the last 6 second. Shadow Walk activated.");
                     InvisBuff = _owningChampion.AddBuffGameScript("EveInvis", "EveInvis", _owningSpell, -1, true);
                     _invisActive = true;
                 }
