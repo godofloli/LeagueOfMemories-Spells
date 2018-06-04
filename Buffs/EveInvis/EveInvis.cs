@@ -35,8 +35,7 @@ namespace EveInvis
         {
             _currentTime += diff;
             if (_currentTime >= (_lastUpdate + 1000))
-            { //1% max mana per second
-                ApiFunctionManager.LogInfo("Trying to regenerate Evelynn's mana");
+            {
                 var manaRegenerated = _ownerUnit.GetStats().ManaPoints.Total / 100;
                 var maxMana = _ownerUnit.GetStats().ManaPoints.Total;
                 var newMana = _ownerUnit.GetStats().CurrentMana + manaRegenerated;
