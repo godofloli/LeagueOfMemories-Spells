@@ -34,17 +34,13 @@ namespace Spells
         {
             var ap = owner.GetStats().AbilityPower.Total;
             var damage = 25 + spell.Level * 55 + ap;
-            spell.Target.TakeDamage(owner, damage, DamageType.DAMAGE_TYPE_MAGICAL, DamageSource.DAMAGE_SOURCE_SPELL,
+            target.TakeDamage(owner, damage, DamageType.DAMAGE_TYPE_MAGICAL, DamageSource.DAMAGE_SOURCE_SPELL,
                 false);
-            if (!spell.Target.IsDead)
+            ApiFunctionManager.LogInfo("Before if " + target);
+            if (!target.IsDead)
             {
-                ApiFunctionManager.AddParticleTarget(owner, "Blitzcrank_Grapplin_tar.troy", spell.Target, 1, "L_HAND");
-                var current = new Vector2(owner.X, owner.Y);
-                var to = Vector2.Normalize(new Vector2(spell.X, spell.Y) - current);
-                var range = to * 50;
-                var trueCoords = current + range;
-                ApiFunctionManager.DashToLocation((ObjAIBase) spell.Target, trueCoords.X, trueCoords.Y,
-                    spell.SpellData.MissileSpeed, true);
+                ApiFunctionManager.AddParticleTarget(owner, "Blitzcrank_Grapplin_tar.troy", target, 1, "L_HAND");
+                target.setPosition(owner.X, owner.Y);
             }
 
             projectile.setToRemove();
