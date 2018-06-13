@@ -45,7 +45,7 @@ namespace Spells
                     float ffs2 = ffs / 4f;
                     owner.RestoreHealth(ffs2);
                 });
-                var buff = ((ObjAIBase)target).AddBuffGameScript("Meditate", "Meditate", spell, -1, true);
+                var buff = ((ObjAIBase)target).AddBuffGameScript("MeditateBuff", "MeditateBuff", spell, -1, true);
 
                 ApiFunctionManager.CreateTimer(4.0f, () =>
                 {
