@@ -21,11 +21,6 @@ namespace Spells
 
         public void OnStartCasting(Champion owner, Spell spell, AttackableUnit target)
         {
-            var OriginalCoordsX = owner.X;
-            var OriginalCoordsY = owner.Y;
-
-            
-           // for (float i = 0.0f; i < 4.0; i += 0.5f){   }
             for (int i = 0; i < 5; i++)
             {
                 
@@ -56,11 +51,6 @@ namespace Spells
                 {
                     owner.RemoveBuffGameScript(buff);
                 });
-                if (OriginalCoordsX != owner.X || OriginalCoordsY != owner.Y)
-                    //seems that this isnt working if anyone has an idea on how to break the healing once the player moves I'd apreciate
-                {
-                    break;
-                }
 
             }
            
