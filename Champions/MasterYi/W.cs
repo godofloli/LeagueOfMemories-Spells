@@ -38,9 +38,9 @@ namespace Spells
                     float hptorecover = new float[] { 30f, 50f, 70f, 90f, 110f }[spell.Level - 1] + ap;
                     float bonushealth = hptorecover * missingHealthPercentage;
 
-                    float ffs = (hptorecover + bonushealth);
-                    float ffs2 = ffs / 4f;
-                    owner.RestoreHealth(ffs2);
+                    float totalhealthtorecover = (hptorecover + bonushealth);
+                    float hptorecoverinhalfasec = totalhealthtorecover / 4f;
+                    owner.RestoreHealth(hptorecoverinhalfasec);
                 });
                 var buff = ((ObjAIBase)target).AddBuffGameScript("MeditateBuff", "MeditateBuff", spell, -1, true);
 
