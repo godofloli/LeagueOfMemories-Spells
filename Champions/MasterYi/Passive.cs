@@ -40,32 +40,23 @@ namespace Spells
             ObjAIBase dsTarget = target as ObjAIBase;
             //1.5% bonus dmg every 4 attacks
             _doublestrikeStacks += 1;
-            if (_doublestrikeStacks < 4)
+            switch (_doublestrikeStacks)
             {
-                ApiFunctionManager.LogInfo("yi's stacks < 4");
-            }
-            if (_doublestrikeStacks == 1)
-            {
-
-                ApiFunctionManager.LogInfo("MasterYi's 1");
-            }
-            else if (_doublestrikeStacks == 2)
-            {
-                ApiFunctionManager.LogInfo("MasterYi's 2");
-            }
-            else if (_doublestrikeStacks == 3)
-            {
-                ApiFunctionManager.LogInfo("MasterYi's 3");
-
-            }
-            else
-            {
-                // 4 auto's reached. Apply damage and reset to zero.
-                ApiFunctionManager.LogInfo("MasterYi's 4");
-                float damage = _owningChampion.GetStats().AttackDamage.Total * 1.5f;
-                dsTarget.TakeDamage(_owningChampion, damage, DamageType.DAMAGE_TYPE_PHYSICAL, DamageSource.DAMAGE_SOURCE_PASSIVE, false);
-                _doublestrikeStacks = 0;
-
+                case 1:
+                    ApiFunctionManager.LogInfo("MasterYi's 1");
+                    break;
+                case 2:
+                    ApiFunctionManager.LogInfo("MasterYi's 2");
+                    break;
+                case 3:
+                    ApiFunctionManager.LogInfo("MasterYi's 3");
+                    break;
+                case 4:
+                    ApiFunctionManager.LogInfo("MasterYi's 4");
+                    float damage = _owningChampion.GetStats().AttackDamage.Total * 1.5f;
+                    dsTarget.TakeDamage(_owningChampion, damage, DamageType.DAMAGE_TYPE_PHYSICAL, DamageSource.DAMAGE_SOURCE_PASSIVE, false);
+                    _doublestrikeStacks = 0;
+                    break;
             }
         }
 
