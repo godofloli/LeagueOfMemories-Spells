@@ -8,9 +8,6 @@ namespace Spells
 {
     public class Meditate : GameScript
     {
-        /*restoring 30/50/70/90/110 (+0.3) Health per second for 4 seconds. This healing is increased by 1% for every 1% of Master Yi's 
-         missing Health.
-        While channeling, Master Yi reduces incoming damage by 50/55/60/65/70%. This damage reduction is halved against turrets.*/
         public void OnActivate(Champion owner)
         {
         }
