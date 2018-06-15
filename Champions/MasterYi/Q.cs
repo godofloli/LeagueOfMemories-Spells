@@ -21,13 +21,6 @@ namespace Spells
             _owningChampion = owner;
         }
 
-        /*private void OnProc(AttackableUnit target, bool isCrit)
-        {
-
-            var damage = new[] { 15, 30, 45, 60, 75 }[_owningSpell.Level - 1] + _owningChampion.GetStats().AbilityPower.Total * 0.15f;
-            target.TakeDamage(_owningChampion, damage, DamageType.DAMAGE_TYPE_MAGICAL, DamageSource.DAMAGE_SOURCE_PASSIVE, false);
-        }*/
-
         public void OnDeactivate(Champion owner)
         {
 
