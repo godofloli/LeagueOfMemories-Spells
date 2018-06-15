@@ -25,12 +25,6 @@ namespace Spells
         }
         public void OnFinishCasting(Champion owner, Spell spell, AttackableUnit target)
         {
-            /*Passive: Champion kills and assists reduce the remaining cooldown of Master Yi's basic 
-             * abilities by 70%.
-
-            Active: Increases Movement Speed by 25/35/45%, Attack Speed by 30/55/80%, and grants
-            immunity to all slowing effects for 10 seconds. While active, champion kills and assists
-            extend the duration of Highlander by 4 seconds.*/
             float duration =  10.0f;
 
             var highlanderbuff = ((ObjAIBase)target).AddBuffGameScript("HighlanderBuff", "HighlanderBuff", spell, -1, true);
